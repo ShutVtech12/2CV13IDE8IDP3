@@ -18,7 +18,7 @@ public class Crear extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Bienvenido</title>");
+            out.println("<title>Nuevo Ejercicio</title>");
             out.println("<link href='style.css' rel='stylesheet' type='text/css'/>");
             out.println("</head>");
             out.println("<body>");
