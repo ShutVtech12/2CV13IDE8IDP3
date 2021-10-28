@@ -25,20 +25,93 @@ body{
 }
 
 .btnE:hover {
-    background-color: rgb(11,94,215); /* Green */
+    background-color: rgb(11,94,215);
+    color: white;
+}
+
+.btnV {
+    display: inline-block;
+    font-weight: 400;
+    line-height: 1.5;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    vertical-align: middle;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    background-color: rgb(25,135,84);
+    border-color: #0d6efd;
+    padding: 0.375rem 0.75rem;
+    font-size: 1rem;
+    border-radius: 0.25rem;
+}
+
+.btnV:hover {
+    background-color: rgb(21,115,71);
+    color: white;
+}
+
+.btnM {
+    display: inline-block;
+    font-weight: 400;
+    line-height: 1.5;
+    color: black;
+    text-align: center;
+    text-decoration: none;
+    vertical-align: middle;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    background-color: rgb(255,193,7);
+    border-color: #0d6efd;
+    padding: 0.375rem 0.75rem;
+    font-size: 1rem;
+    border-radius: 0.25rem;
+}
+
+.btnM:hover {
+    background-color: rgb(255,202,44);
+    color: black;
+}
+
+.btnEli {
+    display: inline-block;
+    font-weight: 400;
+    line-height: 1.5;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    vertical-align: middle;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    background-color: rgb(220,53,69);
+    border-color: #0d6efd;
+    padding: 0.375rem 0.75rem;
+    font-size: 1rem;
+    border-radius: 0.25rem;
+}
+
+.btnEli:hover {
+    background-color: rgb(187,45,59);
     color: white;
 }
 
 table {
   table-layout: fixed;
   width: 100%;
-  border: 1px solid #000;
+  border-width: 1px;
+  padding: 0.5rem 0.5rem;
 }
 
-tr, td{
+tr, td, th{
    width: 25%;
    text-align: left;
-   vertical-align: top;
-   border: 1px solid #000;
+   vertical-align: central;
+   padding: 0.3em;
+   border-color: inherit;
+   border-style: solid;
 }
+
 

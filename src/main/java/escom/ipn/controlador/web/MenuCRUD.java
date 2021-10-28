@@ -15,7 +15,7 @@ public class MenuCRUD extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
+            String[] prueba={"Ejercicio 1", "Ejercicio 2", "Ejercicio 3"};
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
@@ -23,23 +23,28 @@ public class MenuCRUD extends HttpServlet {
             out.println("<link href='style.css' rel='stylesheet' type='text/css'/>");
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Crear, Altas, Bajas y Cambios</h1>");
-            out.println("");
-            out.println("<ul>");
-            out.println("<li><a href='crear'>Crear Nueva Pregunta</a></li>");
-            out.println("</ul>");
-            out.println("<div>");
+            out.println("<h1 align='center'>Crear, Altas, Bajas y Cambios</h1>");
             out.println("<table>");
-            out.println("<thead>");
-            out.println("<th>Nombre de la Pregunta</th>");
-            out.println("<th>Acciones</th>");
-            out.println("</thead>");
             out.println("<tr>");
-            out.println("<td>Raza</td>");
-            out.println("<td>Jack Russell</td>");
+            out.println("<th>Ejercicios</th>");
+            out.println("<th>Acciones</th>");
             out.println("</tr>");
+            for (String prueba1 : prueba) {
+                out.println("<tr>");
+                out.println("<td>");
+                out.println(prueba1);
+                out.println("</td>");
+                out.println("<td>");
+                out.println("<a href='Leer' class='btnV'>Mostrar Ejercicio</a>");
+                out.println("<a href='Actualizar' class='btnM'>Modificar Ejercicio</a>");
+                out.println("<a href='Eliminar' class='btnEli'>Eliminar Ejercicio</a>");
+                out.println("</td>");
+                out.println("</tr>");
+            }
+            
             out.println("</table>");
-            out.println("</div>");
+            out.println("<p align='center'><a href='Crear' class='btnE'>Crear Nueva Pregunta</a></p>");
+            out.println("<p align='center'><a href='"+request.getContextPath()+"' class='btnE'>Voler al menu principal</a></p>");
             out.println("</body>");
             out.println("</html>");
         }
