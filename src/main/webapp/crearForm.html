@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>Crear Ejercicio</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="style.css" rel="stylesheet" type="text/css"/>
+    </head>
+    <body>
+        <h1 align="center">Crear nuevo ejercicio</h1>
+        <div>
+            <form name="frmDatos" method="post" action="Crear" class="formbasic" enctype="multipart/form-data">
+                <div>
+                    <input class="ter1" type="text" name="txtNombre" placeholder="Nombre Ejercicio" required="required">
+                </div>
+                <div>
+                    <input type="text" name="txtDescripcion" placeholder="Descripcion" required="required">
+                </div>
+                <div>
+                    <input type="text" name="txtRespuesta" placeholder="Respuesta" required="required">
+                </div>
+                <div>
+                    <input type="text" name="txtGragica" placeholder="Grafica" required="required">
+                </div>
+                <div align='center'>
+                    <button type="submit" class="btnE" name="btnEnviar">Enviar</button>
+                </div>
+                <div align='center'>
+                    <p><a class='btnE' aria-current='page' href='javascript: history.go(-1)'>Regresar</a></p>
+                </div>
+            </form>
+        </div>
+    </body>
+</html>

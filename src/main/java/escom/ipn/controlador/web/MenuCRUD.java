@@ -43,7 +43,7 @@ public class MenuCRUD extends HttpServlet {
             }
             
             out.println("</table>");
-            out.println("<p align='center'><a href='Crear' class='btnE'>Crear Nueva Pregunta</a></p>");
+            out.println("<p align='center'><a href='crearForm.html' class='btnE'>Crear Nueva Pregunta</a></p>");
             out.println("<p align='center'><a href='"+request.getContextPath()+"' class='btnE'>Voler al menu principal</a></p>");
             out.println("</body>");
             out.println("</html>");

@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 public class Crear extends HttpServlet {
     
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
@@ -18,11 +18,11 @@ public class Crear extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Nuevo Ejercicio</title>");
+            out.println("<title>Listo</title>");
             out.println("<link href='style.css' rel='stylesheet' type='text/css'/>");
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1 align='center'>Este es un ejercicio</h1>");
+            out.println("<h1 align='center'>Ejercicio Guardado</h1>");
             out.println("<p align='center'><a href='javascript: history.go(-1)' class='btnE'>Regresar</a></p>");
             out.println("</body>");
             out.println("</html>");
@@ -30,7 +30,7 @@ public class Crear extends HttpServlet {
     }
 
     @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
     }
 

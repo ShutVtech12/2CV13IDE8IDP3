@@ -3,6 +3,7 @@ body{
     margin: auto;
     font: 100% sans-serif;
     align-content: center;
+    height: 100vh;
 }
 
 
@@ -22,12 +23,13 @@ body{
     padding: 0.375rem 0.75rem;
     font-size: 1rem;
     border-radius: 0.25rem;
+    
 }
 
 .btnE:hover {
-    background-color: rgb(11,94,215);
-    color: white;
-}
+        background-color: rgb(11,94,215);
+        color: white;
+    }
 
 .btnV {
     display: inline-block;
@@ -114,4 +116,42 @@ tr, td, th{
    border-style: solid;
 }
 
+form {
+  position: relative;
 
+  width  : 740px;
+  height : 498px;
+  margin : 0 auto;
+}
+
+.formbasic {
+  
+  border-radius: 2px 2px 5px 5px;
+  padding: 10px 20px 20px 20px;
+  width: 90%;
+  max-width: 320px;
+  background: #ffffff;
+  position: relative;
+  padding-bottom: 80px;
+  box-shadow: 0px 1px 5px rgba(0,0,0,0.3);
+}
+
+input {
+     
+    display: block;
+    padding: 15px 10px;
+    margin-bottom: 10px;
+    width: 100%;
+    border: 1px solid #ddd;
+    transition: border-width 0.2s ease;
+    border-radius: 2px;
+    color: black;
+  }
+  
+input::placeholder{
+        color: #ccc;
+    }
+  
+* {
+      box-sizing: border-box;
+}
