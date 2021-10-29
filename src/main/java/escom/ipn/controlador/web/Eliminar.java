@@ -1,5 +1,6 @@
 package escom.ipn.controlador.web;
 
+import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -14,6 +15,22 @@ public class Eliminar extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
+            
+            String filePath = request.getRealPath("/") + "/files/";
+
+            /*File archivo = new File(filePath + "Figura27.JPG");
+
+            boolean estatus = archivo.delete();
+
+            if (!estatus) {
+
+                System.out.println("Error no se ha podido eliminar el  archivo");
+
+            } else {
+
+                System.out.println("Se ha eliminado el archivo exitosamente");
+
+            } */
             /* TODO output your page here. You may use following sample code. */
             out.println("<!DOCTYPE html>");
             out.println("<html>");

@@ -26,7 +26,7 @@ public class MenuCRUD extends HttpServlet {
             out.println("<h1 align='center'>Crear, Altas, Bajas y Cambios</h1>");
             out.println("<table>");
             out.println("<tr>");
-            out.println("<th>Ejercicios</th>");
+            out.println("<th>Preguntas</th>");
             out.println("<th>Acciones</th>");
             out.println("</tr>");
             for (String prueba1 : prueba) {

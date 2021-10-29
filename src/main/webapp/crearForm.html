@@ -6,26 +6,55 @@ and open the template in the editor.
 -->
 <html>
     <head>
-        <title>Crear Ejercicio</title>
+        <title>Crear Pregunta</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link href="style.css" rel="stylesheet" type="text/css"/>
     </head>
     <body>
-        <h1 align="center">Crear nuevo ejercicio</h1>
+        <h1 align="center">Crear nueva pregunta</h1>
         <div>
             <form name="frmDatos" method="post" action="Crear" class="formbasic" enctype="multipart/form-data">
                 <div>
-                    <input class="ter1" type="text" name="txtNombre" placeholder="Nombre Ejercicio" required="required">
+                    <input type="text" name="txtNombre" placeholder="Nombre pregunta" required="required">
                 </div>
                 <div>
-                    <input type="text" name="txtDescripcion" placeholder="Descripcion" required="required">
+                    <input type="text" name="txtPregunta" placeholder="Pregunta" required="required">
                 </div>
                 <div>
                     <input type="text" name="txtRespuesta" placeholder="Respuesta" required="required">
                 </div>
-                <div>
-                    <input type="text" name="txtGragica" placeholder="Grafica" required="required">
+                <div class="izquierda">
+                    <label for="drag1" class="textex">Drog opci&oacute;n 1</label>
+                    <input type = "file" name = "drag1" id="drag1" size = "90" required="required"/>
+                </div>
+                <div class="derecha">
+                    <label for="target1" class="textex">Target opci&oacute;n 1</label>
+                    <input type = "file" name = "target1" id="target1" size = "90" required="required"/>
+                </div>
+                <div class="izquierda">
+                    <label for="drag2" class="textex">Drog opci&oacute;n 2</label>
+                    <input type = "file" name = "drag2" id="drag2" size = "90" required="required"/>
+                </div>
+                <div class="derecha">
+                    <label for="target2" class="textex">Target opci&oacute;n 2</label>
+                    <input type = "file" name = "target2" id="target2" size = "90" required="required"/>
+                </div>
+                <div class="izquierda">
+                    <label for="drag3" class="textex">Drog opci&oacute;n 3</label>
+                    <input type = "file" name = "drag3" id="drag3" size = "90" required="required"/>
+                </div>
+                <div class="derecha">
+                    <label for="target3" class="textex">Target opci&oacute;n 3</label>
+                    <input type = "file" name = "target3" id="target3" size = "90" required="required"/>
+                </div>
+                <div class="izquierda">
+                    <label for="drag4" class="textex">Drog opci&oacute;n 4</label>
+                    <input type = "file" name = "drag4" id="drag4" size = "90" required="required"/>
+                </div>
+                <div class="derecha">
+                    <label for="target4" class="textex">Target opci&oacute;n 4</label>
+                    <input type = "file" name = "target4" id="target4" size = "90" required="required"/>
                 </div>
                 <div align='center'>
                     <button type="submit" class="btnE" name="btnEnviar">Enviar</button>
