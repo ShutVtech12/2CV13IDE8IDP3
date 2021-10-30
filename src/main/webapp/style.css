@@ -129,10 +129,17 @@ tr, td, th{
   width: 48%;
 }
 
-form {
+.forma {
   position: relative;
   width  : 100%;
   height : 780px;
+  margin : 0 auto;
+}
+
+.formchic{
+  position: relative;
+  width  : 100%;
+  height : 300px;
   margin : 0 auto;
 }
 

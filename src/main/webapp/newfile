@@ -1,139 +1,60 @@
 
 Crear?txtNombre=Preuba+2&txtPregunta=Funcionara%3F&txtRespuesta=diosito+ayuda&txtOpc1=JAJA1&drag1=1.jpeg&txtOpc5=vavava1&target1=Figura27.JPG&txtOpc2=JAJA2&drag2=2.jpeg&txtOpc6=vavava2&target2=Figura26.JPG&txtOpc3=JAJA3&drag3=3.jpeg&txtOpc7=vavava3&target3=Figura25.JPG&txtOpc4=JAJA4&drag4=5.jpeg&txtOpc8=vavava4&target4=Figura24.JPG&btnEnviar=
 
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.PrintWriter;
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import org.jdom.Attribute;
-import org.jdom.Document;
-import org.jdom.Element;
-import org.jdom.JDOMException;
-import org.jdom.input.SAXBuilder;
-import org.jdom.output.Format;
-import org.jdom.output.XMLOutputter;
-
-
-public class Crear extends HttpServlet {
-    @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException 
-    {
-            String nomPregunta=request.getParameter("txtNombre");
-            String textoPregunta=request.getParameter("txtPregunta");
-            String respuestaPregunta=request.getParameter("txtRespuesta");
-            String opcionA=request.getParameter("txtOpc1");
-            String opcionB=request.getParameter("txtOpc2");
-            String opcionC=request.getParameter("txtOpc3");
-            String opcionD=request.getParameter("txtOpc4");
-            String imgA=request.getParameter("drag1");
-            String imgB=request.getParameter("drag2");
-            String imgC=request.getParameter("drag3");
-            String imgD=request.getParameter("drag4");
-            String opcionTA=request.getParameter("txtOpc5");
-            String opcionTB=request.getParameter("txtOpc6");
-            String opcionTC=request.getParameter("txtOpc7");
-            String opcionTD=request.getParameter("txtOpc8");
-            String imgTA=request.getParameter("target1");
-            String imgTB=request.getParameter("target2");
-            String imgTC=request.getParameter("target3");
-            String imgTD=request.getParameter("target4");
-        
-            String ruta=request.getRealPath("/");                
-            response.setContentType("text/html;charset=UTF-8");
-            PrintWriter out = response.getWriter();
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet Servlet_CREATE</title>");            
-            out.println("</head>");
-            out.println("<body>");             
-
-            try 
-            {
-            SAXBuilder builder = new SAXBuilder();     
-            File xmlFile = new File(ruta+"preguntas.xml");                
-            Document doc = builder.build(xmlFile);
-            Element root=doc.getRootElement();
-            Element pregunta= new Element("pregunta");
-            pregunta.setAttribute(new Attribute("texto",textoPregunta));
-            pregunta.setAttribute(new Attribute("respuesta",respuestaPregunta));
-            
-            Element nombreP = new Element("nombre");
-            nombreP.setText(nomPregunta);
-            
-            Element opcionesP = new Element("opciones");
-            Element targetsP = new Element("targets");
-            
-            Element opcionPA = new Element("opcion");
-            opcionPA.setAttribute("Imagen", imgA);
-            opcionPA.setText(opcionA);
-            
-            Element opcioNTA=new Element("opcion");
-            opcioNTA.setAttribute("Imagen",imgTA);
-            opcioNTA.setText(opcionTA);
-            
-            Element opcionPB = new Element("opcion");
-            opcionPB.setAttribute("Imagen", imgB);
-            opcionPB.setText(opcionB);
-            
-            Element opcioNTB=new Element("opcion");
-            opcioNTB.setAttribute("Imagen",imgTB);
-            opcioNTB.setText(opcionTB);
-            
-            Element opcionPC = new Element("opcion");
-            opcionPC.setAttribute("Imagen", imgC);
-            opcionPC.setText(opcionC);
-            
-            Element opcioNTC=new Element("opcion");
-            opcioNTC.setAttribute("Imagen",imgTC);
-            opcioNTC.setText(opcionTC);
-            
-            Element opcionPD = new Element("opcion");
-            opcionPD.setAttribute("Imagen", imgD);
-            opcionPD.setText(opcionD);
-            
-            Element opcioNTD=new Element("opcion");
-            opcioNTD.setAttribute("Imagen",imgTD);
-            opcioNTD.setText(opcionTD);
-            
-            opcionesP.addContent(opcionPA);
-            opcionesP.addContent(opcionPB);
-            opcionesP.addContent(opcionPC);
-            opcionesP.addContent(opcionPD);
-            
-            targetsP.addContent(opcioNTA);
-            targetsP.addContent(opcioNTB);
-            targetsP.addContent(opcioNTC);
-            targetsP.addContent(opcioNTD);
-            
-            pregunta.addContent(nombreP);
-            pregunta.addContent(opcionesP);
-            pregunta.addContent(targetsP);
-
-            root.addContent(pregunta);
-            
-            XMLOutputter xmlOutput = new XMLOutputter();
-            xmlOutput.setFormat(Format.getPrettyFormat());
-            FileWriter writer = new FileWriter(ruta+"preguntas.xml");                
-            xmlOutput.output(doc, writer);
-            writer.flush();
-            writer.close();          
-            
-            out.println("ELEMENTO AGREGADO<br>");
-            out.println("<a href='preguntas.xml'>Revisar DOC xml</a><br>");
-            out.println("<a href='index.html'>Volver a INICIO</a>");
-            out.println("</body>");
-            out.println("</html>");  
-            } 
-            catch (IOException | JDOMException e) 
-            {
-            e.printStackTrace();
-            }
-
-    }
-}
+<form name='frmDatos' method='get' action='Crear' class='formbasic' enctype='multipart/form-data'>
+                <div>
+                    <input type='text' name='txtNombre' placeholder='Nombre pregunta' required='required'>
+                </div>
+                <div>
+                    <input type='text' name='txtPregunta' placeholder='Pregunta' required='required'>
+                </div>
+                <div>
+                    <input type='text' name='txtRespuesta' placeholder='Respuesta' required='required'>
+                </div>
+                <div class='izquierda'>
+                    <label for='drag1' class='textex'>Drog opci&oacute;n 1</label>
+                    <input type='text' name='txtOpc1' placeholder='Opcion Columna 1' required='required'>
+                    <input type = 'file' name = 'drag1' id='drag1' size = '90' required='required'/>
+                </div>
+                <div class='derecha'>
+                    <label for='target1' class='textex'>Target opci&oacute;n 1</label>
+                    <input type='text' name='txtOpc5' placeholder='Opcion Columna 5' required='required'>
+                    <input type = 'file' name = 'target1' id='target1' size = '90' required='required'/>
+                </div>
+                <div class='izquierda'>
+                    <label for='drag2' class='textex'>Drog opci&oacute;n 2</label>
+                    <input type='text' name='txtOpc2' placeholder='Opcion Columna 2' required='required'>
+                    <input type = 'file' name = 'drag2' id='drag2' size = '90' required='required'/>
+                </div>
+                <div class='derecha'>
+                    <label for='target2' class='textex'>Target opci&oacute;n 2</label>
+                    <input type='text' name='txtOpc6' placeholder='Opcion Columna 6' required='required'>
+                    <input type = 'file' name = 'target2' id='target2' size = '90' required='required'/>
+                </div>
+                <div class='izquierda'>
+                    <label for='drag3' class='textex'>Drog opci&oacute;n 3</label>
+                    <input type='text' name='txtOpc3' placeholder='Opcion Columna 3' required='required'>
+                    <input type = 'file' name = 'drag3' id='drag3' size = '90' required='required'/>
+                </div>
+                <div class='derecha'>
+                    <label for='target3' class='textex'>Target opci&oacute;n 3</label>
+                    <input type='text' name='txtOpc7' placeholder='Opcion Columna 7' required='required'>
+                    <input type = 'file' name = 'target3' id='target3' size = '90' required='required'/>
+                </div>
+                <div class='izquierda'>
+                    <label for='drag4' class='textex'>Drog opci&oacute;n 4</label>
+                    <input type='text' name='txtOpc4' placeholder='Opcion Columna 4' required='required'>
+                    <input type = 'file' name = 'drag4' id='drag4' size = '90' required='required'/>
+                </div>
+                <div class='derecha'>
+                    <label for='target4' class='textex'>Target opci&oacute;n 4</label>
+                    <input type='text' name='txtOpc8' placeholder='Opcion Columna 8' required='required'>
+                    <input type = 'file' name = 'target4' id='target4' size = '90' required='required'/>
+                </div>
+                <div align='center'>
+                    <button type='submit' class='btnE' name='btnEnviar'>Enviar</button>
+                </div>
+                <div align='center'>
+                    <p><a class='btnE' aria-current='page' href='javascript: history.go(-1)'>Regresar</a></p>
+                </div>
+            </form>

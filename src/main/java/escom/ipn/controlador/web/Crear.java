@@ -38,6 +38,7 @@ public class Crear extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         
         //drg imgA-D targ imgTA
+        int aumento;
         String nomPregunta = request.getParameter("txtNombre");
         String textoPregunta = request.getParameter("txtPregunta");
         String respuestaPregunta = request.getParameter("txtRespuesta");
@@ -66,10 +67,21 @@ public class Crear extends HttpServlet {
             //La ruta de nuestra proyecto
             filePath = request.getRealPath("/");
             SAXBuilder builder = new SAXBuilder();     
-            File xmlFile = new File(filePath+"preguntas.xml");                
+            File xmlFile = new File(filePath+"preguntas.xml");
+            
+            Document document = (Document) builder.build(xmlFile);
+            Element rootNode = document.getRootElement();
+            List list = rootNode.getChildren("pregunta");
+            if(list.size()!=0)
+            {
+                aumento=list.size()+1;
+            } else {
+                aumento = 1;
+            }
             Document doc = builder.build(xmlFile);
             Element root=doc.getRootElement();
             Element pregunta= new Element("pregunta");
+            pregunta.setAttribute(new Attribute("id",Integer.toString(aumento)));
             pregunta.setAttribute(new Attribute("texto",textoPregunta));
             pregunta.setAttribute(new Attribute("respuesta",respuestaPregunta));
             

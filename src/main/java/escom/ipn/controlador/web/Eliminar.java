@@ -1,12 +1,22 @@
 package escom.ipn.controlador.web;
 
 import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import org.jdom.Document;
+import org.jdom.Element;
+import org.jdom.JDOMException;
+import org.jdom.input.SAXBuilder;
+import org.jdom.output.Format;
+import org.jdom.output.XMLOutputter;
 
 public class Eliminar extends HttpServlet {
     
@@ -16,21 +26,20 @@ public class Eliminar extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             
-            String filePath = request.getRealPath("/") + "/files/";
-
-            /*File archivo = new File(filePath + "Figura27.JPG");
-
-            boolean estatus = archivo.delete();
-
-            if (!estatus) {
-
-                System.out.println("Error no se ha podido eliminar el  archivo");
-
-            } else {
-
-                System.out.println("Se ha eliminado el archivo exitosamente");
-
-            } */
+            String filePath = request.getRealPath("/");
+            int id = Integer.parseInt(request.getParameter("id"));
+            String di = request.getParameter("id");
+            SAXBuilder builder = new SAXBuilder();     
+            File xmlFile = new File(filePath+"preguntas.xml");                
+            Document doc = builder.build(xmlFile);
+            Element root=doc.getRootElement();
+            root.removeContent(id);
+            XMLOutputter xmlOutput = new XMLOutputter();
+            xmlOutput.setFormat(Format.getPrettyFormat());
+            FileWriter writer = new FileWriter(filePath+"preguntas.xml");                
+            xmlOutput.output(doc, writer);
+            writer.flush();
+            writer.close();
             /* TODO output your page here. You may use following sample code. */
             out.println("<!DOCTYPE html>");
             out.println("<html>");
@@ -39,10 +48,12 @@ public class Eliminar extends HttpServlet {
             out.println("<link href='style.css' rel='stylesheet' type='text/css'/>");
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1 align='center'>Este es un ejercicio</h1>");
-            out.println("<p align='center'><a href='javascript: history.go(-1)' class='btnE'>Regresar</a></p>");
+            out.println("<h1 align='center'>Se Elimino Correctamente</h1>");
+            out.println("<p align='center'><a href='MenuCRUD' class='btnE'>Regresar</a></p>");
             out.println("</body>");
             out.println("</html>");
+        } catch (JDOMException ex) {
+            Logger.getLogger(Eliminar.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 

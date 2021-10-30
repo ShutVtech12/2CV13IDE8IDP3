@@ -1,11 +1,19 @@
 package escom.ipn.controlador.web;
 
+import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import org.jdom.Document;
+import org.jdom.Element;
+import org.jdom.JDOMException;
+import org.jdom.input.SAXBuilder;
 
 
 public class MenuCRUD extends HttpServlet {
@@ -14,6 +22,9 @@ public class MenuCRUD extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
+        String ruta = request.getRealPath("/");
+        SAXBuilder builder = new SAXBuilder();
+        File xmlFile = new File(ruta + "preguntas.xml");
         try (PrintWriter out = response.getWriter()) {
             String[] prueba={"Ejercicio 1", "Ejercicio 2", "Ejercicio 3"};
             out.println("<!DOCTYPE html>");
@@ -24,20 +35,24 @@ public class MenuCRUD extends HttpServlet {
             out.println("</head>");
             out.println("<body>");
             out.println("<h1 align='center'>Crear, Altas, Bajas y Cambios</h1>");
+            Document document = (Document) builder.build(xmlFile);
+            Element rootNode = document.getRootElement();
+            List list = rootNode.getChildren("pregunta");
             out.println("<table>");
             out.println("<tr>");
             out.println("<th>Preguntas</th>");
             out.println("<th>Acciones</th>");
             out.println("</tr>");
-            for (String prueba1 : prueba) {
+            for (int i = 0; i < list.size(); i++) {
+                Element node = (Element) list.get(i);
                 out.println("<tr>");
                 out.println("<td>");
-                out.println(prueba1);
+                out.println(node.getChildText("nombre"));
                 out.println("</td>");
                 out.println("<td>");
-                out.println("<a href='Leer' class='btnV'>Mostrar Ejercicio</a>");
-                out.println("<a href='Actualizar' class='btnM'>Modificar Ejercicio</a>");
-                out.println("<a href='Eliminar' class='btnEli'>Eliminar Ejercicio</a>");
+                out.println("<a href='Leer?id="+node.getAttributeValue("id")+"' class='btnV'>Mostrar Ejercicio</a>");
+                out.println("<a href='Actualizar?id="+node.getAttributeValue("id")+"' class='btnM'>Modificar Ejercicio</a>");
+                out.println("<a href='Eliminar?id="+node.getAttributeValue("id")+"' class='btnEli'>Eliminar Ejercicio</a>");
                 out.println("</td>");
                 out.println("</tr>");
             }
@@ -47,6 +62,8 @@ public class MenuCRUD extends HttpServlet {
             out.println("<p align='center'><a href='"+request.getContextPath()+"' class='btnE'>Voler al menu principal</a></p>");
             out.println("</body>");
             out.println("</html>");
+        } catch (JDOMException ex) {
+            Logger.getLogger(MenuCRUD.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
     
