@@ -37,6 +37,8 @@ public class Leer extends HttpServlet {
             Document document = (Document) builder.build(xmlFile);
             Element rootNode = document.getRootElement();
             Element node = rootNode.getChild("pregunta");
+            List opc = node.getChildren("opciones");
+            List tar = node.getChildren("targets");
             out.println("<form name='frmDatos' class='formchic formbasic' enctype='multipart/form-data'>");
             out.println("<div>");
             out.println("<input type='text' name='txtNombre' value='" + node.getChildText("nombre") + "' readonly='readonly'>");
@@ -47,46 +49,71 @@ public class Leer extends HttpServlet {
             out.println("<div>");
             out.println("<input type='text' name='txtRespuesta' value='" + node.getAttributeValue("respuesta") + "' readonly='readonly'>");
             out.println("</div>");
-//                out.println("<div class='izquierda'>");
-//                out.println("<label for='drag1' class='textex'>Drog opci&oacute;n 1</label>");
-//                out.println("<input type='text' name='txtOpc1' placeholder='Opcion Columna 1' required='required'>");
-//                out.println("<input type = 'file' name = 'drag1' id='drag1' size = '90' required='required'/>");
-//                out.println("</div>");
-//                out.println("<div class='derecha'>");
-//                out.println("<label for='target1' class='textex'>Target opci&oacute;n 1</label>");
-//                out.println("<input type='text' name='txtOpc5' placeholder='Opcion Columna 5' required='required'>");
-//                out.println("<input type = 'file' name = 'target1' id='target1' size = '90' required='required'/>");
-//                out.println("</div>");
-//                out.println("<div class='izquierda'>");
-//                out.println("<label for='drag2' class='textex'>Drog opci&oacute;n 2</label>");
-//                out.println("<input type='text' name='txtOpc2' placeholder='Opcion Columna 2' required='required'>");
-//                out.println("<input type = 'file' name = 'drag2' id='drag2' size = '90' required='required'/>");
-//                out.println("</div>");
-//                out.println("<div class='derecha'>");
-//                out.println("<label for='target2' class='textex'>Target opci&oacute;n 2</label>");
-//                out.println("<input type='text' name='txtOpc6' placeholder='Opcion Columna 6' required='required'>");
-//                out.println("<input type = 'file' name = 'target2' id='target2' size = '90' required='required'/>");
-//                out.println("</div>");
-//                out.println("<div class='izquierda'>");
-//                out.println("<label for='drag3' class='textex'>Drog opci&oacute;n 3</label>");
-//                out.println("<input type='text' name='txtOpc3' placeholder='Opcion Columna 3' required='required'>");
-//                out.println("<input type = 'file' name = 'drag3' id='drag3' size = '90' required='required'/>");
-//                out.println("</div>");
-//                out.println("<div class='derecha'>");
-//                out.println("<label for='target3' class='textex'>Target opci&oacute;n 3</label>");
-//                out.println("<input type='text' name='txtOpc7' placeholder='Opcion Columna 7' required='required'>");
-//                out.println("<input type = 'file' name = 'target3' id='target3' size = '90' required='required'/>");
-//                out.println("</div>");
-//                out.println("<div class='izquierda'>");
-//                out.println("<label for='drag4' class='textex'>Drog opci&oacute;n 4</label>");
-//                out.println("<input type='text' name='txtOpc4' placeholder='Opcion Columna 4' required='required'>");
-//                out.println("<input type = 'file' name = 'drag4' id='drag4' size = '90' required='required'/>");
-//                out.println("</div>");
-//                out.println("<div class='derecha'>");
-//                out.println("<label for='target4' class='textex'>Target opci&oacute;n 4</label>");
-//                out.println("<input type='text' name='txtOpc8' placeholder='Opcion Columna 8' required='required'>");
-//                out.println("<input type = 'file' name = 'target4' id='target4' size = '90' required='required'/>");
-//                out.println("</div>");
+                
+            for(int i=0;i<opc.size();i++){
+                
+                Element node1 = (Element) opc.get(i);
+                Element node2 = (Element) tar.get(i);
+                out.println("<div class='izquierda'>");
+                out.println("<label for='drag1' class='textex'>Drog opci&oacute;n 1</label>");
+                out.println("<input type='text' name='txtOpc1' value='"+node1.getChildText("opcion")+"' readonly='readonly' >");
+                //out.println("<input type = 'file' name = 'drag1' id='drag1' size = '90' required='required'/>");
+                out.println("</div>");
+                
+                out.println("<div class='derecha'>");
+                out.println("<label for='target1' class='textex'>Target opci&oacute;n 1</label>");
+                out.println("<input type='text' name='txtOpc5' value='"+node2.getChildText("opcion")+"' readonly='readonly'>");
+                //out.println("<img src='"+node1.getAttributeValue("Imagen")+"'>");
+                //out.println("<input type = 'file' name = 'target1' id='target1' size = '90' required='required'/>");
+                out.println("</div>");
+                
+                out.println("<div class='izquierda'>");
+                out.println("<label for='drag2' class='textex'>Drog opci&oacute;n 2</label>");
+                out.println("<input type='text' name='txtOpc2' value='"+node1.getChildText("opcion")+"' readonly='readonly' >");
+                //out.println("<input type = 'file' name = 'drag2' id='drag2' size = '90' required='required'/>");
+                out.println("</div>");
+                
+                out.println("<div class='derecha'>");
+                out.println("<label for='target2' class='textex'>Target opci&oacute;n 2</label>");
+                out.println("<input type='text' name='txtOpc6' value='"+node2.getChildText("opcion")+"' readonly='readonly'>");
+                //out.println("<input type = 'file' name = 'target2' id='target2' size = '90' required='required'/>");
+                out.println("</div>");
+                
+                out.println("<div class='izquierda'>");
+                out.println("<label for='drag3' class='textex'>Drog opci&oacute;n 3</label>");
+                out.println("<input type='text' name='txtOpc3' value='"+node1.getChildText("opcion")+"' readonly='readonly' >");
+                //out.println("<input type = 'file' name = 'drag3' id='drag3' size = '90' required='required'/>");
+                out.println("</div>");
+                
+                out.println("<div class='derecha'>");
+                out.println("<label for='target3' class='textex'>Target opci&oacute;n 3</label>");
+                out.println("<input type='text' name='txtOpc7' value='"+node2.getChildText("opcion")+"' readonly='readonly'>");
+                //out.println("<input type = 'file' name = 'target3' id='target3' size = '90' required='required'/>");
+                out.println("</div>");
+                
+                out.println("<div class='izquierda'>");
+                out.println("<label for='drag4' class='textex'>Drog opci&oacute;n 4</label>");
+                out.println("<input type='text' name='txtOpc4' value='"+node1.getChildText("opcion")+"' readonly='readonly' >");
+                //out.println("<input type = 'file' name = 'drag4' id='drag4' size = '90' required='required'/>");
+                out.println("</div>");
+                
+                out.println("<div class='derecha'>");
+                out.println("<label for='target4' class='textex'>Target opci&oacute;n 4</label>");
+                out.println("<input type='text' name='txtOpc8' value='"+node2.getChildText("opcion")+"' readonly='readonly'>");
+                //out.println("<input type = 'file' name = 'target4' id='target4' size = '90' required='required'/>");
+                out.println("</div>");
+                
+            }
+            
+                
+                
+               
+                
+                
+                
+                
+               
+                
             out.println("<div align='center'>");
             out.println("<p><a class='btnE' aria-current='page' href='MenuCRUD'>Regresar</a></p>");
             out.println("</div>");
