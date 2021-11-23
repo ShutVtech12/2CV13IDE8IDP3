@@ -91,35 +91,35 @@ public class Crear extends HttpServlet {
             Element opcionesP = new Element("opciones");
             Element targetsP = new Element("targets");
             
-            Element opcionPA = new Element("opcion");
+            Element opcionPA = new Element("opcion1");
             opcionPA.setAttribute("Imagen", drg1);
             opcionPA.setText(opcionA);
             
-            Element opcioNTA=new Element("opcion");
+            Element opcioNTA=new Element("opcion1");
             opcioNTA.setAttribute("Imagen",targ1);
             opcioNTA.setText(opcionTA);
             
-            Element opcionPB = new Element("opcion");
+            Element opcionPB = new Element("opcion2");
             opcionPB.setAttribute("Imagen", drg2);
             opcionPB.setText(opcionB);
             
-            Element opcioNTB=new Element("opcion");
+            Element opcioNTB=new Element("opcion2");
             opcioNTB.setAttribute("Imagen",targ2);
             opcioNTB.setText(opcionTB);
             
-            Element opcionPC = new Element("opcion");
+            Element opcionPC = new Element("opcion3");
             opcionPC.setAttribute("Imagen", drg3);
             opcionPC.setText(opcionC);
             
-            Element opcioNTC=new Element("opcion");
+            Element opcioNTC=new Element("opcion3");
             opcioNTC.setAttribute("Imagen",targ3);
             opcioNTC.setText(opcionTC);
             
-            Element opcionPD = new Element("opcion");
+            Element opcionPD = new Element("opcion4");
             opcionPD.setAttribute("Imagen", drg4);
             opcionPD.setText(opcionD);
             
-            Element opcioNTD=new Element("opcion");
+            Element opcioNTD=new Element("opcion4");
             opcioNTD.setAttribute("Imagen",targ4);
             opcioNTD.setText(opcionTD);
             
