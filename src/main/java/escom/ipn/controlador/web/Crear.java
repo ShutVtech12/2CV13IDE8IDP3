@@ -27,8 +27,8 @@ public class Crear extends HttpServlet {
     
     private boolean isMultipart;
     private String filePath;
-    private int maxFileSize = 90 * 1024;
-    private int maxMemSize = 9 * 1024;
+    private int maxFileSize = 50 * 1024*1024;
+    private int maxMemSize = 50 * 1024*1024;
     private File file ;
     private String[] extens = {".png", ".jpg", ".jpeg",};
     
@@ -39,6 +39,9 @@ public class Crear extends HttpServlet {
         
         //drg imgA-D targ imgTA
         int aumento;
+        String nombresArchivos[] = new String[4*2];
+        String dragsTargetsTexto[] = new String[4*2];
+        int idxFiles=0, idxFields = 0;
         String nomPregunta = request.getParameter("txtNombre");
         String textoPregunta = request.getParameter("txtPregunta");
         String respuestaPregunta = request.getParameter("txtRespuesta");
@@ -196,8 +199,26 @@ public class Crear extends HttpServlet {
                             file = new File(filePath + fileName.substring(fileName.lastIndexOf("\\") + 1));
                         }
                         fi.write(file);
-                        out.println("Archivo subido: " + fileName + "<br />");
-                    } else{
+                        nombresArchivos[idxFiles++] = fieldName;
+                        out.println("Archivo subido: " + nombresArchivos[idxFiles-1] + "<br />");
+                    } else if (fi.isFormField()) {
+                        String nombre = fi.getFieldName();
+                        out.println("<p>OBTENEMOS LOS DATOS DED LOS CAMPOS: " + nombre + "</p>");
+                        if (nombre.contains("nombrePregunta")) {
+                            nomPregunta = fi.getString();
+                        }
+                        if (nombre.contains("pregunta")) {
+                            textoPregunta = fi.getString();
+                        }
+                        if (nombre.contains("respuesta")) {
+                            respuestaPregunta = fi.getString();
+                        }
+                        if (nombre.contains("opciones")) {
+                            dragsTargetsTexto[idxFields++] = fi.getString();
+                        }
+                        if (nombre.contains("targets")) {
+                            dragsTargetsTexto[idxFields++] = fi.getString();
+                        }
                     }
                 }
             } catch (Exception ex) {
