@@ -28,12 +28,40 @@ public class Eliminar extends HttpServlet {
             
             String filePath = request.getRealPath("/");
             int id = Integer.parseInt(request.getParameter("id"));
+            int idI,cont=0;
             String di = request.getParameter("id");
             SAXBuilder builder = new SAXBuilder();     
             File xmlFile = new File(filePath+"preguntas.xml");                
             Document doc = builder.build(xmlFile);
             Element root=doc.getRootElement();
-            root.removeContent(id);
+            List idPregunta= root.getChildren("pregunta"); 
+            for(int z=0;z<idPregunta.size();z++){
+                Element pre = (Element) idPregunta.get(z);
+                idI = Integer.parseInt(pre.getAttributeValue("id"));
+                if(id==idI){
+                    out.println("<h1 align='center'>Entra al if</h1>");
+                    root.removeChild("pregunta");
+                    XMLOutputter xmlOutput = new XMLOutputter();
+                    xmlOutput.setFormat(Format.getPrettyFormat());
+                    FileWriter writer = new FileWriter(filePath+"preguntas.xml");                
+                    xmlOutput.output(doc, writer);
+                    writer.flush();
+                    writer.close();
+                }
+                //else{
+                    //pre.getAttribute("id").setValue(Integer.toString(z+1));
+                    //cont++;
+                //}     
+            }
+             for(int z1=0;z1<idPregunta.size();z1++){
+                 Element pre = (Element) idPregunta.get(z1);
+                 pre.getAttribute("id").setValue(Integer.toString(z1+1));
+                 
+             }
+            
+            
+            
+            //root.removeContent(id);
             XMLOutputter xmlOutput = new XMLOutputter();
             xmlOutput.setFormat(Format.getPrettyFormat());
             FileWriter writer = new FileWriter(filePath+"preguntas.xml");                

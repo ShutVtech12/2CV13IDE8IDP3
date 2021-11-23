@@ -20,6 +20,10 @@
         <servlet-name>Crear</servlet-name>
         <servlet-class>escom.ipn.controlador.web.Crear</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>DActualizar</servlet-name>
+        <servlet-class>escom.ipn.controlador.web.DActualizar</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>MenuCRUD</servlet-name>
         <url-pattern>/MenuCRUD</url-pattern>
@@ -39,6 +43,10 @@
     <servlet-mapping>
         <servlet-name>Crear</servlet-name>
         <url-pattern>/Crear</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DActualizar</servlet-name>
+        <url-pattern>/DActualizar</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
