@@ -46,7 +46,7 @@ public class Leer extends HttpServlet {
                     Element node = (Element) idPregunta.get(z);
                     List opc = node.getChildren("opciones");
                     List tar = node.getChildren("targets");
-                    out.println("<form name='frmDatos' class='formchic formbasic' enctype='multipart/form-data'>");
+                    out.println("<form name='frmDatos' class='formchic' enctype='multipart/form-data'>");
                     out.println("<div>");
                     out.println("<input type='text' name='txtNombre' value='" + node.getChildText("nombre") + "' readonly='readonly'>");
                     out.println("</div>");
